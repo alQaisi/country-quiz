@@ -23,6 +23,7 @@ export const Flag=styled.img`
     width:125px;
     height:auto;
     margin-bottom: 28px;
+    border: 1px solid rgba(0,0,0,.25);
 `
 
 export const QuestionTitle=styled.h2`

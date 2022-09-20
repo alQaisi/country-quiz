@@ -21,8 +21,8 @@ export function QuizProvider({children}){
                 if(answers.indexOf(countries[ans].name.common)===-1)
                     answers.push(countries[ans].name.common);
                 if(answers.length-1===answerNumber){
-                    const type=countries[ans].capital[0]?questionTypes[Math.floor(Math.random()*2)]:questionTypes[0];
-                    if(type==="flag")
+                    const type=countries[ans].capital?questionTypes[Math.floor(Math.random()*2)]:questionTypes[0];
+                    if(type==="capital")
                         quizQuestion.text=`${countries[ans].capital[0]} is the capital of`;
                     else{
                         quizQuestion.text=`Which country does this flag belong to?`;
@@ -34,8 +34,6 @@ export function QuizProvider({children}){
             setQuestion({...quizQuestion,answers:[...answers]}); 
         }
     },[countries,questionNumber]);
-
-    console.log(question);
 
     const value={ questionNumber, setQuestionNumber, question, results };
     return(
