@@ -1,0 +1,28 @@
+import styled from "styled-components";
+
+export const ButtonCont=styled.button`
+    border: 2px solid #1D355D;
+    color: #1D355D;
+    background-color: transparent;
+    border-radius: 12px;
+    font-weight:600;
+    line-height: 1.5rem;
+    font-size: 1rem;
+    padding: 15px 35px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &.next{
+        float: right;
+    }
+    &.center{
+        display: block;
+        margin: auto;
+    }
+    :hover{
+        color: #F2F2F2;
+        background: #F9A826;
+        border-color: #F9A826;
+        box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+    }
+`;
