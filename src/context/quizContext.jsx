@@ -10,8 +10,44 @@ export function QuizProvider({children}){
     const [question,setQuestion]=useState(undefined);
     const [results,setResults]=useState(["","","",""]);
 
+    function onAnsClick({target}){
+        const { ans }=target.dataset;
+        const correctIndex=question.answers.indexOf(question.answer);
+        const ansIndex=question.answers.indexOf(ans);
+        const results=["not answerd","not answerd","not answerd","not answerd"];
+        if(ans===question.answer)
+            results[ansIndex]="right";
+        else{
+            results[ansIndex]="wrong";
+            results[correctIndex]="right";
+        }
+        setResults(results);
+    }
+
+    function Next(){
+        if(results.includes("wrong"))
+            return setQuestion(null);
+        setQuestion(undefined);
+        setTimeout(() => {
+            setResults(["","","",""]);
+            setQuestionNumber(questionNumber+1); 
+        },500);
+    }
+
+    function Reset(){
+        setResults(["","","",""]);
+        setQuestion(undefined);
+        if(questionNumber===0)
+            return setQuestionNumber(-1);
+        setQuestionNumber(0)
+    }
+
     useEffect(()=>{
-        if(countries.length){
+        questionNumber===-1 && setQuestionNumber(0)
+    },[questionNumber]);
+
+    useEffect(()=>{
+        if(countries.length && question!==null && questionNumber!==-1){
             const questionTypes=["flag","capital"];
             const answers=[];
             let quizQuestion={};
@@ -33,9 +69,10 @@ export function QuizProvider({children}){
             }
             setQuestion({...quizQuestion,answers:[...answers]}); 
         }
+        //eslint-disable-next-line
     },[countries,questionNumber]);
 
-    const value={ questionNumber, setQuestionNumber, question, results };
+    const value={ questionNumber, Reset, question, results, onAnsClick, Next };
     return(
         <QuizContext.Provider value={value}> { children } </QuizContext.Provider>
     );
