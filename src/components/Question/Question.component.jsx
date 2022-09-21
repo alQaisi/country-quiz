@@ -3,8 +3,6 @@ import { Fragment } from "react";
 import Button from "../Button/Button.component";
 
 function Question({results,question,Next,onAnsClick}){
-    
-
     if(question===undefined)
         return <Loading/>
     return(
