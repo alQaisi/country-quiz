@@ -13,9 +13,10 @@ const IconStyles=css`
     color: #F2F2F2;
     width: 25px;
     height: 25px;
+    flex-shrink:0;
     display: none;
-    position: absolute;
-    right: 20px;
+    /* position: absolute;
+    right: 20px; */
     margin-left: auto;
 `;
 

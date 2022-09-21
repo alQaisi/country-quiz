@@ -47,7 +47,7 @@ export function QuizProvider({children}){
     },[questionNumber]);
 
     useEffect(()=>{
-        if(countries.length && question!==null && questionNumber!==-1){
+        if(countries.length && question===undefined && questionNumber!==-1){
             const questionTypes=["flag","capital"];
             const answers=[];
             let quizQuestion={};
