@@ -8,7 +8,7 @@ function Results({questionNumber,Reset}){
         <Fragment>
             <WinnerIcon/>
             <Title>Results</Title>
-            <Result>Tou got <span>{questionNumber}</span> correct answers</Result>
+            <Result>You got <span>{questionNumber}</span> correct answers</Result>
             <Button className="center" onClick={Reset}>Try again</Button>
         </Fragment>
     );
