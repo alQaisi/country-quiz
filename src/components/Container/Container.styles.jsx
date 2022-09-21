@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+export const ErrorCont=styled.div`
+    color: #F2F2F2;
+    text-align: center;
+    & button{
+        display: block;
+        margin:50px auto;
+    }
+`;
+
 export const QuizContainer=styled.div`
     background-color: #FFFFFF;
     border-radius: 24px;

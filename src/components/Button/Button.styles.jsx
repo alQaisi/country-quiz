@@ -19,6 +19,16 @@ export const ButtonCont=styled.button`
         display: block;
         margin: auto;
     }
+    &.reload{
+        border-color:#F2F2F2;
+        color: #F2F2F2; 
+    }
+    &.reload:hover{
+        color:#1D355D;
+        background-color:#F2F2F2;
+        border-color:#F2F2F2;
+        box-shadow: none;
+    }
     :hover{
         color: #F2F2F2;
         background: #F9A826;

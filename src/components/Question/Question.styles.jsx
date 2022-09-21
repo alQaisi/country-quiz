@@ -1,5 +1,13 @@
 import styled,{ css } from "styled-components";
 import { AiOutlineCloseCircle, AiOutlineCheckCircle } from 'react-icons/ai';
+import { ReactComponent as loading } from "../../assets/loading.svg";
+
+export const Loading=styled(loading)`
+    width: 225px;
+    height: auto;
+    display: block;
+    margin: 25px auto;
+`;
 
 const IconStyles=css`
     color: #F2F2F2;
@@ -87,4 +95,7 @@ export const Answer=styled.div`
         if(props.result)
             return `pointer-events:none;`
     }}
+    & *{
+        pointer-events: none;
+    }
 `;
