@@ -15,8 +15,6 @@ const IconStyles=css`
     height: 25px;
     flex-shrink:0;
     display: none;
-    /* position: absolute;
-    right: 20px; */
     margin-left: auto;
 `;
 
@@ -33,7 +31,7 @@ export const Flag=styled.img`
     height:auto;
     margin-bottom: 28px;
     border: 1px solid rgba(0,0,0,.25);
-`
+`;
 
 export const QuestionTitle=styled.h2`
     color: #2F527B;
@@ -51,6 +49,10 @@ const WrongStyles=css`
     ${WrongIcon}{
         display: initial;
     }
+    &:hover{
+        background: #EA8282;
+        border-color:#EA8282;
+    }
 `;
 const RighStyles=css`
     background: #60BF88;
@@ -59,6 +61,10 @@ const RighStyles=css`
     pointer-events:none;
     ${RightIcon}{
         display: initial;
+    }
+    &:hover{
+        background: #60BF88;
+        border-color:#60BF88;
     }
 `;
 
