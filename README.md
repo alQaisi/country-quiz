@@ -24,8 +24,8 @@
 
 ## Contact
 
-- GitHub [@your-username](https://github.com/alqaisi)
-- Twitter [@your-twitter](https://twitter.com/alQaisi77)
+- GitHub [alQaisi](https://github.com/alqaisi)
+- Twitter [alQaisi77](https://twitter.com/alQaisi77)
 
 
 # Getting Started with Create React App
