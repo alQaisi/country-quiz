@@ -5,7 +5,7 @@ import Results from "../Results/Results.component";
 import { Fragment, useContext } from "react";
 import { QuizContext } from "../../context/quizContext";
 import { CountriesContext } from "../../context/countriesContext";
-import Button from "../Button/Button.component"
+import Button from "../Button/Button.component";
 
 function Container(){
     const { isError }=useContext(CountriesContext);
@@ -19,7 +19,7 @@ function Container(){
     if(question===null)
         Content=<Results questionNumber={questionNumber} Reset={Reset}/>;
     else
-        Content=<Fragment><QuizIcon/><Question Next={Next} onAnsClick={onAnsClick} results={results} question={question}/></Fragment>
+        Content=<Fragment><QuizIcon/><Question Next={Next} questionNumber={questionNumber} onAnsClick={onAnsClick} results={results} question={question}/></Fragment>
     return(
         <QuizContainer>
             {Content}

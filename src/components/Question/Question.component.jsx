@@ -1,20 +1,37 @@
-import { QuestionTitle, Answer, WrongIcon, RightIcon, Flag, Loading } from "./Question.styles";
-import { Fragment } from "react";
+import { QuestionTitle, Flag, Loading } from "./Question.styles";
 import Button from "../Button/Button.component";
+import { motion, AnimatePresence } from "framer-motion";
+import { Children } from "react";
+import Answer from "../answer/answer.component";
 
-function Question({results,question,Next,onAnsClick}){
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.25
+      }
+    },
+    exit:{ opacity:0 }
+}
+
+const flag={
+    hidden:{y:-100,opacity:0},
+    show:{y:0,opacity:1}
+}
+
+function Question({results,questionNumber,question,Next,onAnsClick}){
     if(question===undefined)
         return <Loading/>
     return(
-        <Fragment>
-            {question?.flag && <Flag src={question.flag} alt="flag"/>}
-            <QuestionTitle>{question.text}</QuestionTitle>
-            <Answer onClick={onAnsClick} data-ans={question.answers[0]} result={results[0]}><span>A</span>{question.answers[0]}<WrongIcon/><RightIcon/></Answer>
-            <Answer onClick={onAnsClick} data-ans={question.answers[1]} result={results[1]}><span>B</span>{question.answers[1]}<WrongIcon/><RightIcon/></Answer>
-            <Answer onClick={onAnsClick} data-ans={question.answers[2]} result={results[2]}><span>C</span>{question.answers[2]}<WrongIcon/><RightIcon/></Answer>
-            <Answer onClick={onAnsClick} data-ans={question.answers[3]} result={results[3]}><span>D</span>{question.answers[3]}<WrongIcon/><RightIcon/></Answer>
-            {results.includes("right") && <Button className="next" onClick={Next}>Next</Button>}
-        </Fragment>
+        <AnimatePresence mode="wait" initial={true}>
+            <motion.div variants={container} initial="hidden" animate="show" exit="exit" key={questionNumber || -1}>
+                {question?.flag && <motion.div variants={flag}><Flag src={question.flag} alt="flag"/></motion.div>}
+                <QuestionTitle>{question.text}</QuestionTitle>
+                { Children.toArray(question?.answers.map((answerData,index)=><Answer onAnsClick={onAnsClick} answer={answerData} result={results[index]} index={index} />)) }
+                {results.includes("right") && <Button className="next" onClick={Next}>Next</Button>}
+            </motion.div>
+        </AnimatePresence>
     );
 }
 
