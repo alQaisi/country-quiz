@@ -9,17 +9,17 @@ import Button from "../Button/Button.component";
 
 function Container(){
     const { isError }=useContext(CountriesContext);
-    const { Reset, questionNumber, question, results, onAnsClick, Next }=useContext(QuizContext);
-    let Content;
+    const { Reset, questionNumber, question}=useContext(QuizContext);
+    let Content:JSX.Element;
     if(isError)
         return <ErrorCont>
                     <h2>Check your internet connection and try again</h2>
-                    <Button className="reload" onClick={()=>window.location.reload(false)}>Reload</Button>
+                    <Button className="reload" onClick={()=>window.location.reload()}>Reload</Button>
                 </ErrorCont>
     if(question===null)
         Content=<Results questionNumber={questionNumber} Reset={Reset}/>;
     else
-        Content=<Fragment><QuizIcon/><Question Next={Next} questionNumber={questionNumber} onAnsClick={onAnsClick} results={results} question={question}/></Fragment>
+        Content=<Fragment><QuizIcon/><Question/></Fragment>
     return(
         <QuizContainer>
             {Content}

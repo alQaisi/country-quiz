@@ -8,7 +8,14 @@ const answerAnimations = {
 
 const chars=["A","B","C","D"];
 
-function Answer({onAnsClick,answer,result,index}) {
+type AnswerProps={
+    onAnsClick(event:React.MouseEvent<HTMLDivElement>):void
+    answer:string
+    result:""|"wrong"|"right"|"now answerd"
+    index:number
+}
+
+function Answer({onAnsClick,answer,result,index}:AnswerProps) {
     return (
         <motion.div variants={answerAnimations}>
             <AnswerContainer data-ans={answer} onClick={onAnsClick} result={result}>

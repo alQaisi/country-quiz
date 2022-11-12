@@ -9,7 +9,11 @@ export const ErrorCont=styled.div`
     }
 `;
 
-export const QuizContainer=styled.div`
+type QuizContainerProps={
+    children:JSX.Element[] | JSX.Element
+}
+
+export const QuizContainer=styled.div<QuizContainerProps>`
     background-color: #FFFFFF;
     border-radius: 24px;
     width: 95%;

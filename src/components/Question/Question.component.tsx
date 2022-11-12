@@ -3,6 +3,8 @@ import Button from "../Button/Button.component";
 import { motion, AnimatePresence } from "framer-motion";
 import { Children } from "react";
 import Answer from "../answer/answer.component";
+import { QuizContext } from "../../context/quizContext";
+import { useContext } from "react";
 
 const container = {
     hidden: { opacity: 0 },
@@ -20,10 +22,11 @@ const flag={
     show:{y:0,opacity:1}
 }
 
-function Question({results,questionNumber,question,Next,onAnsClick}){
+function Question(){
+    const {  questionNumber, question, results, onAnsClick, Next }=useContext(QuizContext);
     if(question===undefined)
         return <Loading/>
-    return(
+    return question && (
         <AnimatePresence mode="wait" initial={true}>
             <motion.div variants={container} initial="hidden" animate="show" exit="exit" key={questionNumber || -1}>
                 {question?.flag && <motion.div variants={flag}><Flag src={question.flag} alt="flag"/></motion.div>}

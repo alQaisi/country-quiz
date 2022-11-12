@@ -3,7 +3,7 @@ import Button from "../Button/Button.component";
 import { Fragment } from "react";
 import { Title, Result } from "./Results.styles";
 
-function Results({questionNumber,Reset}){
+function Results({questionNumber,Reset}:{questionNumber:number,Reset:()=>void}){
     return(
         <Fragment>
             <WinnerIcon/>

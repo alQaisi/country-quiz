@@ -8,6 +8,7 @@ const IconStyles=css`
     flex-shrink:0;
     display: none;
     margin-left: auto;
+    pointer-events: none;
 `;
 
 export const WrongIcon=styled(AiOutlineCloseCircle)`
@@ -45,7 +46,11 @@ const RighStyles=css`
     }
 `;
 
-export const Answer=styled.div`
+type AnswerProps={
+    result:""|"wrong"|"right"|"now answerd"
+}
+
+export const Answer=styled.div<AnswerProps>`
     width: 100%;
     background: #FFFFFF;
     border: 2px solid rgba(96, 102, 208, 0.7);
@@ -70,6 +75,7 @@ export const Answer=styled.div`
     & span{
         font-size: 1.33rem;
         line-break: 2rem;
+        pointer-events: none;
     }
     ${(props)=>{
         if(props.result==="wrong")

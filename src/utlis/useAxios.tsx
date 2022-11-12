@@ -1,10 +1,14 @@
 import { useState,useEffect } from "react";
+import { Country } from "../context/countriesContext";
 import axios from "axios";
 
-function useAxios(){
+
+
+function useAxios():{ countries:Country[],isError:boolean }{
     
-    const [countries,setCountries]=useState([]);
+    const [countries,setCountries]=useState<Country[]>([] as Country[]);
     const [isError,setIsError]=useState(false);
+
 
     const controller = new AbortController();
     

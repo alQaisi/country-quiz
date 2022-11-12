@@ -1,20 +1,42 @@
-import { createContext, useContext ,useEffect, useState } from "react";
+import React, { createContext, useContext ,useEffect, useState } from "react";
 import { CountriesContext } from "./countriesContext";
 
-export const QuizContext=createContext({});
+type Question={
+    answers:string[]
+    answer:string
+    text:string
+    flag?:string
+} | null | undefined
 
-export function QuizProvider({children}){
+type Result=""|"wrong"|"right"|"now answerd"
+
+type QuizContextType={
+    Reset:()=>void
+    onAnsClick:(event:React.MouseEvent<HTMLDivElement>)=>void
+    Next:()=>void
+    question:Question
+    questionNumber:number
+    results:Result[]
+}
+
+export const QuizContext=createContext<QuizContextType>({} as QuizContextType );
+
+export function QuizProvider({children}:{children:React.ReactNode}){
     const { countries }=useContext(CountriesContext);
     
     const [questionNumber,setQuestionNumber]=useState(0);
-    const [question,setQuestion]=useState(undefined);
-    const [results,setResults]=useState(["","","",""]);
+    const [question,setQuestion]=useState<Question>(undefined);
+    const [results,setResults]=useState<Result[]>(["","","",""]);
 
-    function onAnsClick({target}){
+    function onAnsClick({target}:React.MouseEvent<HTMLDivElement>){
+        if(!(target instanceof HTMLDivElement) )
+            return; 
+        if(!question)
+            return;
         const { ans }=target.dataset;
         const correctIndex=question.answers.indexOf(question.answer);
-        const ansIndex=question.answers.indexOf(ans);
-        const results=["not answerd","not answerd","not answerd","not answerd"];
+        const ansIndex=ans?question.answers.indexOf(ans):-1;
+        const results:Result[]=["now answerd","now answerd","now answerd","now answerd"];
         if(ans===question.answer)
             results[ansIndex]="right";
         else{
@@ -50,7 +72,7 @@ export function QuizProvider({children}){
         if(countries.length && question===undefined && questionNumber!==-1){
             const questionTypes=["flag","capital"];
             const answers=[];
-            let quizQuestion={};
+            let quizQuestion:Question={text:"",answer:"",answers:[""]};
             const answerNumber=Math.floor(Math.random()*4);            
             while(answers.length<4){
                 const ans=Math.floor(Math.random()*countries.length);
@@ -67,7 +89,7 @@ export function QuizProvider({children}){
                     quizQuestion.answer=countries[ans].name.common;
                 }
             }
-            setQuestion({...quizQuestion,answers:[...answers]}); 
+            setQuestion({...quizQuestion,answers:[...answers],}); 
         }
         //eslint-disable-next-line
     },[countries,questionNumber]);

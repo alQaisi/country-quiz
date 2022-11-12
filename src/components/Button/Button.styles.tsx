@@ -1,6 +1,21 @@
+import React from "react";
 import styled from "styled-components";
 
-export const ButtonCont=styled.button`
+// export type ButtonProps=Omit<React.ComponentProps<"button">,"children">& {
+//     children:string
+// }
+
+export interface ButtonProps extends React.ComponentProps<"button">{
+    children:string
+    className?:string
+    onClick?:(event:React.MouseEvent<HTMLButtonElement>)=>void
+}  
+
+// export type ButtonProps= Omit<React.ComponentProps<"button">,"children">& {
+//     children:string
+// } 
+ 
+export const ButtonCont=styled.button<ButtonProps>`
     border: 2px solid #1D355D;
     color: #1D355D;
     background-color: transparent;
