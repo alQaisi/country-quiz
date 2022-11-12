@@ -31,7 +31,7 @@ function Question(){
             <motion.div variants={container} initial="hidden" animate="show" exit="exit" key={questionNumber || -1}>
                 {question?.flag && <motion.div variants={flag}><Flag src={question.flag} alt="flag"/></motion.div>}
                 <QuestionTitle>{question.text}</QuestionTitle>
-                { Children.toArray(question?.answers.map((answerData,index)=><Answer onAnsClick={onAnsClick} answer={answerData} result={results[index]} index={index} />)) }
+                { Children.toArray(question?.answers.map((answerData,index)=><Answer onAnsClick={onAnsClick} result={results[index]} index={index}>{answerData}</Answer>)) }
                 {results.includes("right") && <Button className="next" onClick={Next}>Next</Button>}
             </motion.div>
         </AnimatePresence>

@@ -10,17 +10,17 @@ const chars=["A","B","C","D"];
 
 type AnswerProps={
     onAnsClick(event:React.MouseEvent<HTMLDivElement>):void
-    answer:string
     result:""|"wrong"|"right"|"now answerd"
     index:number
+    children:string
 }
 
-function Answer({onAnsClick,answer,result,index}:AnswerProps) {
+function Answer({onAnsClick,result,index,children}:AnswerProps) {
     return (
         <motion.div variants={answerAnimations}>
-            <AnswerContainer data-ans={answer} onClick={onAnsClick} result={result}>
+            <AnswerContainer data-ans={children} onClick={onAnsClick} result={result}>
                 <span>{ chars[index] }</span>
-                { answer }
+                { children }
                 <WrongIcon/>
                 <RightIcon/>
             </AnswerContainer>
