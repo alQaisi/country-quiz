@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/country-quiz/static/css/main.0a0376b4.css",
-    "main.js": "/country-quiz/static/js/main.33bba679.js",
-    "static/media/undraw_winners_ao2o 2.svg": "/country-quiz/static/media/undraw_winners_ao2o 2.d76bfdf87016eda38fd439d929ce0371.svg",
+    "main.js": "/country-quiz/static/js/main.14888ca9.js",
+    "static/media/undraw_winners_ao2o 2.svg": "/country-quiz/static/media/undraw_winners_ao2o 2.3cc505dc5f9d425bb9278584620c594e.svg",
     "static/media/background.png": "/country-quiz/static/media/background.41dbc5504a105eae7176.png",
     "service-worker.js": "/country-quiz/service-worker.js",
-    "static/media/undraw_adventure_4hum 1.svg": "/country-quiz/static/media/undraw_adventure_4hum 1.182b6171bba7c99e5444500b4daec361.svg",
-    "static/media/loading.svg": "/country-quiz/static/media/loading.3aff8efcde63f321ebf50f94e1524ed8.svg",
+    "static/media/undraw_adventure_4hum 1.svg": "/country-quiz/static/media/undraw_adventure_4hum 1.160d80a04ed06da80099c8cbdecf0136.svg",
+    "static/media/loading.svg": "/country-quiz/static/media/loading.05de004c0e8b50fa19540eaa9d8589a0.svg",
     "index.html": "/country-quiz/index.html",
     "main.0a0376b4.css.map": "/country-quiz/static/css/main.0a0376b4.css.map",
-    "main.33bba679.js.map": "/country-quiz/static/js/main.33bba679.js.map"
+    "main.14888ca9.js.map": "/country-quiz/static/js/main.14888ca9.js.map"
   },
   "entrypoints": [
     "static/css/main.0a0376b4.css",
-    "static/js/main.33bba679.js"
+    "static/js/main.14888ca9.js"
   ]
 }
